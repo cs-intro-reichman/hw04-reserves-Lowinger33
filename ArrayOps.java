@@ -32,42 +32,15 @@ public class ArrayOps {
     }
 
     public static int secondMaxValue(int[] array) {
-        int n = array.length;
-        int max = array[0];
-        int i = 0;
-        int rep = 0;
-        while (i < n) {
-            if (array[i] >= max) {
-                max = array[i];
-            }
-            i++;
-        }
-        i = 0;
-        while (i < n) {
-            if (array[i] == max) {
-                rep++;
-            }
-            i++;
-        }
-        i = 0;
-        int j = 0;
-        int temp[] = new int[n - rep];
-        while (i < n - rep) {
+        int max = Max(array);
+        int sec = Low(array);
+        for (int i = 0; i < array.length; i++) {
             if (array[i] != max) {
-                temp[j] = array[i];
-                j++;
+                if (array[i] > sec) {
+                    sec = array[i];
+                }
             }
-            i++;
         }
-        i = 0;
-        int sec = temp[i];
-        while (i < n - rep) {
-            if (temp[i] >= sec) {
-                sec = temp[i];
-            }
-            i++;
-        }
-
         return sec;
     }
 
@@ -109,6 +82,28 @@ public class ArrayOps {
             }
         }
         return exist;
+    }
+
+    public static int Max(int[] array) {
+        int n = array.length;
+        int max = array[0];
+        for (int i = 0; i < n; i++) {
+            if (array[i] > max) {
+                max = array[i];
+            }
+        }
+        return max;
+    }
+
+    public static int Low(int[] array) {
+        int n = array.length;
+        int low = array[0];
+        for (int i = 0; i < n; i++) {
+            if (array[i] < low) {
+                low = array[i];
+            }
+        }
+        return low;
     }
 
 }
