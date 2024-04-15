@@ -58,8 +58,10 @@ public class StringOps {
 
     public static String camelCase(String string) {
         int i = 0;
-        SkipSpace(string, i);
-        i++;
+        if (string.charAt(i) == 32) {
+            SkipSpace(string, i);
+            i++;
+        }
         String ans = "";
         while (string.charAt(i) != 32) {
             if (string.charAt(i) > 64 && string.charAt(i) < 91) {
