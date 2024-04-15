@@ -1,7 +1,7 @@
 public class ArrayOps {
     public static void main(String[] args) {
         System.out.println(findMissingInt(new int[] { 3, 0, 1 }));
-        System.out.println(secondMaxValue(new int[] { 6, 9, 4, 7, 3, 4 }));
+        System.out.println(secondMaxValue(new int[] { 2, 8, 3, 7, 8 }));
         System.out.println(containsTheSameElements(new int[] { 1, 2, 1, 1, 2 }, new int[] { 2, 1 }));
         System.out.println(containsTheSameElements(new int[] { 2, 2, 3, 7, 8, 3, 2 }, new int[] { 8, 2, 7, 7, 3 }));
         System.out.println(containsTheSameElements(new int[] { 3, -4, 1, 2, 5 }, new int[] { 1, 3, -4, 5 }));
@@ -50,10 +50,12 @@ public class ArrayOps {
             i++;
         }
         i = 0;
+        int j = 0;
         int temp[] = new int[n - rep];
         while (i < n - rep) {
             if (array[i] != max) {
-                temp[i] = array[i];
+                temp[j] = array[i];
+                j++;
             }
             i++;
         }
