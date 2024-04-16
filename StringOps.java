@@ -25,7 +25,9 @@ public class StringOps {
         System.out.println(capVowelsLowRest("Hello World"));
         System.out.println(capVowelsLowRest("One two tHRee world"));
         System.out.println(camelCase("Hello World"));
-        System.out.println(camelCase("   Intro   to     coMPUter         sCIEncE"));
+        System.out.println(camelCase(" tWo    wordS"));
+        int[] array = (allIndexOf("Hello world", 'l'));
+        System.out.println(array[2]);
 
     }
 
@@ -103,8 +105,31 @@ public class StringOps {
     }
 
     public static int[] allIndexOf(String string, char chr) {
-        // Write your code here:
-        return new int[1];
+        int[] temp = new int[string.length()];
+        int j = 0;
+        for (int x = 0; x < string.length(); x++) {
+            if (string.charAt(x) == chr) {
+                temp[j] = x;
+                j++;
+            }
+        }
+        int i = 0;
+        int length = 0;
+        if (temp[0] == 0) {
+            length++;
+            i++;
+        }
+        while (i < string.length()) {
+            if (temp[i] != 0) {
+                length++;
+            }
+            i++;
+        }
+        int[] ans = new int[length];
+        for (int x = 0; x < length; x++) {
+            ans[x] = temp[x];
+        }
+        return ans;
     }
 
     public static int SkipSpace(String string, int i) {
