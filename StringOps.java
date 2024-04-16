@@ -63,9 +63,9 @@ public class StringOps {
         temp = string.substring(x);
         int i = 0;
         if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
-            ans = ans + temp.charAt(i);
+            ans = ans + (char) (temp.charAt(i) + 32);
         } else {
-            ans = ans + (char) (temp.charAt(i) - 32);
+            ans = ans + temp.charAt(i);
         }
         i++;
         while (temp.charAt(i) != 32) {
