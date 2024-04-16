@@ -25,7 +25,7 @@ public class StringOps {
         System.out.println(capVowelsLowRest("Hello World"));
         System.out.println(capVowelsLowRest("One two tHRee world"));
         System.out.println(camelCase("Hello World"));
-        System.out.println(camelCase("   Intro   to     coMPUter    sCIEncE"));
+        System.out.println(camelCase("   Intro   to     coMPUter         sCIEncE"));
 
     }
 
@@ -57,37 +57,47 @@ public class StringOps {
     }
 
     public static String camelCase(String string) {
-        int i = 0;
-        if (string.charAt(i) == 32) {
-            SkipSpace(string, i);
-            i++;
-        }
         String ans = "";
-        while (string.charAt(i) != 32) {
-            if (string.charAt(i) > 64 && string.charAt(i) < 91) {
-                ans = ans + (char) (string.charAt(i) + 32);
+        String temp = "";
+        int x = First(string);
+        temp = string.substring(x);
+        int i = 0;
+        if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
+            ans = ans + temp.charAt(i);
+        } else {
+            ans = ans + (char) (temp.charAt(i) - 32);
+        }
+        i++;
+        while (temp.charAt(i) != 32) {
+            if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
+                ans = ans + (char) (temp.charAt(i) + 32);
             } else {
-                ans = ans + string.charAt(i);
+                ans = ans + temp.charAt(i);
             }
             i++;
         }
-        for (int j = i; j < string.length(); j++) {
-            if (string.charAt(j) > 64 && string.charAt(j) < 91) {
-                ans = ans + (char) (string.charAt(j) + 32);
-            }
-            if (string.charAt(j) > 96 && string.charAt(j) < 123) {
-                ans = ans + string.charAt(j);
-            }
-            if (string.charAt(j) == 32) {
-                SkipSpace(string, j);
-                j++;
-                if (string.charAt(j) > 64 && string.charAt(j) < 91) {
-                    ans = ans + string.charAt(j);
+        temp = temp.substring(i);
+        i = 0;
+        while (i < temp.length()) {
+            if (temp.charAt(i) == 32) {
+                SkipSpace(temp, i);
+                i++;
+                if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
+                    ans = ans + temp.charAt(i);
+                    i++;
                 } else {
-                    ans = ans + (char) (string.charAt(j) - 32);
+                    ans = ans + (char) (temp.charAt(i) - 32);
+                    i++;
+                }
+            } else {
+                if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
+                    ans = ans + (char) (temp.charAt(i) + 32);
+                    i++;
+                } else {
+                    ans = ans + temp.charAt(i);
+                    i++;
                 }
             }
-
         }
         return ans;
     }
@@ -98,6 +108,14 @@ public class StringOps {
     }
 
     public static int SkipSpace(String string, int i) {
+        while (string.charAt(i) < 65) {
+            i++;
+        }
+        return i;
+    }
+
+    public static int First(String string) {
+        int i = 0;
         while (string.charAt(i) == 32) {
             i++;
         }
