@@ -25,7 +25,7 @@ public class StringOps {
         System.out.println(capVowelsLowRest("Hello World"));
         System.out.println(capVowelsLowRest("One two tHRee world"));
         System.out.println(camelCase("Hello World"));
-        System.out.println(camelCase(" tWo    wordS"));
+        System.out.println(camelCase(" tWo     wordS"));
         int[] array = (allIndexOf("Hello world", 'l'));
         System.out.println(array[2]);
 
@@ -82,8 +82,7 @@ public class StringOps {
         i = 0;
         while (i < temp.length()) {
             if (temp.charAt(i) == 32) {
-                SkipSpace(temp, i);
-                i++;
+                i = SkipSpace(temp, i);
                 if (temp.charAt(i) > 64 && temp.charAt(i) < 91) {
                     ans = ans + temp.charAt(i);
                     i++;
